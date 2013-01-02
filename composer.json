@@ -1,0 +1,22 @@
+{
+    "name": "karser/mainsms-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony MainSMSBundle",
+    "keywords": ["mainsms"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.1,<2.3-dev"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Karser\\MainSMSBundle": "" }
+    },
+    "target-dir": "Karser/MainSMSBundle",
+    "authors": [
+        {
+            "name": "Dmitry Poddubny",
+            "email": "dpoddubny@gmail.com"
+        }
+    ]
+}

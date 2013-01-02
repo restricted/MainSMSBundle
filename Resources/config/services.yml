@@ -1,0 +1,6 @@
+parameters:
+    karser_main_sms.main_sms.class: Karser\MainSMSBundle\Model\MainSMS
+services:
+    karser_main_sms.main_sms:
+        class: %karser_main_sms.main_sms.class%
+        arguments: [ %main_sms.project%, %main_sms.key%, %main_sms.use_ssl%, %main_sms.test_mode% ]
