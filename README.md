@@ -82,4 +82,6 @@ $MainSMSService = $this->get('karser_main_sms.main_sms');
 //or use getter trait
 use \Karser\MainSMSBundle\Model\Getter;
 $MainSMSService = $this->getMainSmsService($this->container);
+//send message
+$MainSMSService->messageSend($number, $message, $sender);
 ```
