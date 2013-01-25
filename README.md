@@ -5,7 +5,7 @@ Getting started with MainSMSBundle
 
 ## Prerequisites
 
-This version of the bundle requires Symfony 2.1+
+This version of the bundle requires Symfony 2.1+ and Doctrine ORM 2.2+
 
 ## Installation
 
@@ -76,12 +76,31 @@ parameters:
 ```
 
 ### Usage Steps
-
+#### Basic usage
+You can send message directly:
 ``` php
-$MainSMSService = $this->get('karser_main_sms.main_sms');
+$MainSMSModel = $this->get('karser.main_sms.model');
 //or use getter trait
 use \Karser\MainSMSBundle\Model\Getter;
-$MainSMSService = $this->getMainSmsService($this->container);
+$MainSMSModel = $this->getMainSmsModel($this->container);
 //send message
-$MainSMSService->messageSend($number, $message, $sender);
+$MainSMSModel->messageSend($number, $message, $sender);
+```
+#### Schedule the message
+It maps the message to SMSTask entity and stores to the database
+``` php
+$MainSMSManager = $this->get('karser.main_sms.manager');
+//or use getter trait
+use \Karser\MainSMSBundle\Manager\Getter;
+$MainSMSManager = $this->getMainSmsManager($this->container);
+//schedule message
+$MainSMSManager->schedule($number, $message, $sender);
+```
+You can send it later by cli command:
+```
+$ app/console mainsms:send
+> Balance is 6.45
+> Messages to send 1
+.
+Done.
 ```
