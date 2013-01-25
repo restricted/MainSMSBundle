@@ -10,7 +10,7 @@ trait Getter
      * @return MainSMSManager
      * @throws \LogicException
      */
-    protected function getMainSmsModel(ContainerInterface $container)
+    protected function getMainSmsManager(ContainerInterface $container)
     {
         if (!$container->has('karser.main_sms.manager')) {
             throw new \LogicException('The MainSms bundle is not registered in your application.');
