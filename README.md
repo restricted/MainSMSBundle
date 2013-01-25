@@ -74,6 +74,10 @@ parameters:
     main_sms_use_ssl:   ~ # true or false
     main_sms_test_mode: ~ # true or false
 ```
+If you going to store messages in the database, don't forget to update your schema:
+```
+app/console doctrine:schema:update
+```
 
 ### Usage Steps
 #### Basic usage
