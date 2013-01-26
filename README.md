@@ -90,6 +90,13 @@ $MainSMSModel = $this->getMainSmsModel($this->container);
 //send message
 $MainSMSModel->messageSend($number, $message, $sender);
 ```
+
+You can check the balance by cli command:
+```
+$ app/console mainsms:balance
+> Balance is 6.45
+```
+
 #### Schedule the message
 It maps the message to SMSTask entity and stores to the database
 ``` php
