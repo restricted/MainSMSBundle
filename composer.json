@@ -1,6 +1,6 @@
 {
     "name": "karser/mainsms-bundle",
-    "type": "composer-installer",
+    "type": "symfony-bundle",
     "description": "Symfony MainSMSBundle",
     "keywords": ["mainsms"],
     "license": "MIT",
@@ -8,8 +8,7 @@
         "php": ">=5.3.2",
         "symfony/framework-bundle": ">=2.1,<2.3-dev",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "doctrine/doctrine-bundle": "1.0.*",
-        "composer/installers": "*"
+        "doctrine/doctrine-bundle": "1.0.*"
     },
     "minimum-stability": "dev",
     "autoload": {
