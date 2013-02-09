@@ -98,7 +98,13 @@ $ app/console mainsms:balance
 ```
 
 #### Schedule the message
-It maps the message to SMSTask entity and stores to the database
+Ensure that doctrine automapping is enabled:
+``` yaml
+doctrine:
+    orm:
+        auto_mapping: true
+```
+It maps the message to SMSTask entity and stores to the database.
 ``` php
 $MainSMSManager = $this->get('karser.main_sms.manager');
 //or use getter trait
