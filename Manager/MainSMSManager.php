@@ -16,7 +16,7 @@ class MainSMSManager
         $this->em = $em;
     }
 
-    public function schedule($phone_number, $message, $sender, $ip_address)
+    public function schedule($phone_number, $message, $sender, $ip_address = '')
     {
         $SmsTask = new SmsTask();
         $SmsTask->setPhoneNumber($phone_number);
