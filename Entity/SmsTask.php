@@ -55,6 +55,13 @@ class SmsTask
     protected $isSent = false;
 
     /**
+     * @ORM\Column(type="string", length=1000)
+     *
+     * @var string
+     */
+    protected $ipAddress;
+
+    /**
      * @ORM\PrePersist
      */
     public function prePersist() {
@@ -184,5 +191,21 @@ class SmsTask
     public function getIsSent()
     {
         return $this->isSent;
+    }
+
+    /**
+     * @param string $ipAddress
+     */
+    public function setIpAddress($ipAddress)
+    {
+        $this->ipAddress = $ipAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIpAddress()
+    {
+        return $this->ipAddress;
     }
 }

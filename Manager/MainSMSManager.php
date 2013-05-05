@@ -16,13 +16,14 @@ class MainSMSManager
         $this->em = $em;
     }
 
-    public function schedule($phone_number, $message, $sender)
+    public function schedule($phone_number, $message, $sender, $ip_address)
     {
         $SmsTask = new SmsTask();
         $SmsTask->setPhoneNumber($phone_number);
         $SmsTask->setMessage($message);
         $SmsTask->setSender($sender);
         $SmsTask->setIsSent(false);
+        $SmsTask->setIpAddress($ip_address);
         $this->em->persist($SmsTask);
         $this->em->flush();
         return true;
