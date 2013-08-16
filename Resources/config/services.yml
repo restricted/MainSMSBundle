@@ -1,15 +1,14 @@
 parameters:
     karser.main_sms.model.class: Karser\MainSMSBundle\Model\MainSMS
-    karser.main_sms.manager.class: Karser\MainSMSBundle\Manager\MainSMSManager
+    karser.handler.main_sms.class: Karser\MainSMSBundle\Handler\MainSMSHandler
 
 services:
     karser.main_sms.model:
         class: %karser.main_sms.model.class%
         arguments: [ %main_sms.project%, %main_sms.key%, %main_sms.use_ssl%, %main_sms.test_mode% ]
 
-    karser_main_sms.main_sms: #compatibility
-        alias: karser.main_sms.model
-
-    karser.main_sms.manager:
-        class: %karser.main_sms.manager.class%
-        arguments: [ @karser.main_sms.model, @doctrine.orm.entity_manager ]
+    karser.handler.main_sms:
+        class: %karser.handler.main_sms.class%
+        arguments: [ @karser.main_sms.model ]
+        tags:
+          - {name: "sms.handler"}
