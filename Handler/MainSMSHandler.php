@@ -28,6 +28,28 @@ class MainSMSHandler extends AbstractHandler implements HandlerInterface
 
     public function send(SMSTaskInterface $SMSTask)
     {
-        return $this->MainSMS->messageSend($SMSTask->getPhoneNumber(), $SMSTask->getMessage(), $SMSTask->getSender());
+        if (!$this->MainSMS->messageSend($SMSTask->getPhoneNumber(), $SMSTask->getMessage(), $SMSTask->getSender())) {
+            throw new \Exception('error');
+        }
+        $response = $this->MainSMS->getResponse();
+        return current($response['messages_id']);
+    }
+
+    /**
+     * @param string
+     * @return string
+     */
+    public function checkStatus($message_id)
+    {
+        $status = $this->MainSMS->messageStatus($message_id);
+        switch ($status[$message_id]) {
+            case 'enqueued':
+                return SMSTaskInterface::STATUS_PROCESSING;
+            case 'accepted':
+            case 'delivered':
+                return SMSTaskInterface::STATUS_SENT;
+            default:
+                return SMSTaskInterface::STATUS_FAIL;
+        }
     }
 }
