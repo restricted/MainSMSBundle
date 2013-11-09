@@ -7,18 +7,17 @@ use Karser\SMSBundle\Entity\SMSTaskInterface;
 use Karser\SMSBundle\Handler\AbstractHandler;
 use Karser\SMSBundle\Handler\HandlerInterface;
 
-class MainSMSHandler extends AbstractHandler implements HandlerInterface
+class MainSMSHandler extends AbstractHandler
 {
+    protected $name = 'karser.handler.main_sms';
+
+    protected $cost = 0.15;
+
     private $MainSMS;
 
     public function __construct(MainSMS $MainSMS)
     {
         $this->MainSMS = $MainSMS;
-    }
-
-    public function supports($number)
-    {
-        return true;
     }
 
     public function getBalance()
