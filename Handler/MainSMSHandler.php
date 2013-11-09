@@ -3,6 +3,7 @@ namespace Karser\MainSMSBundle\Handler;
 
 
 use Karser\MainSMSBundle\Model\MainSMS;
+use Karser\SMSBundle\Entity\HlrInterface;
 use Karser\SMSBundle\Entity\SMSTaskInterface;
 use Karser\SMSBundle\Handler\AbstractHandler;
 use Karser\SMSBundle\Handler\HandlerInterface;
@@ -51,4 +52,13 @@ class MainSMSHandler extends AbstractHandler
                 return SMSTaskInterface::STATUS_FAIL;
         }
     }
+
+    public function supports($number, HlrInterface $hlr = null)
+    {
+        if ($hlr) {
+            return $hlr->getOpsos() === 'МегаФон';
+        }
+        return parent::supports($number, $hlr);
+    }
+
 }
