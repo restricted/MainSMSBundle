@@ -30,11 +30,7 @@ class MainSMSHandler extends AbstractHandler
         return current($response['messages_id']);
     }
 
-    /**
-     * @param string
-     * @return string
-     */
-    public function checkStatus($message_id)
+    public function checkStatus($message_id, $phone = null)
     {
         $status = $this->MainSMS->messageStatus($message_id);
         switch ($status[$message_id]) {
